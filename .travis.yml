@@ -1,0 +1,16 @@
+language: generic
+
+sudo: required
+
+matrix:
+  include:
+    - dist: trusty
+    - dist: precise
+    - dist: xenial
+    - dist: yakkety
+
+before_install:
+  - sudo apt-get update -q
+  - sudo apt-get install coinor-csdp -y
+
+script: for i in *.dat-s; do echo $i; csdp $i; done
